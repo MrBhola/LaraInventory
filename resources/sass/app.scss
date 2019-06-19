@@ -3,6 +3,17 @@
 
 // Variables
 @import 'variables';
+$fa-font-path: "../webfonts";
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+@import '~admin-lte/dist/css/adminlte.css';
+//fontawasome
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
+@import "~@fortawesome/fontawesome-free/scss/brands.scss";
+
+.router-link-exact-active {
+    background-color: blueviolet;
+    color: aliceblue !important;
+}
