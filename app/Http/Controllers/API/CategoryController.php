@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return Category::latest()->paginate(10);
     }
 
     /**
@@ -26,6 +26,9 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => ['required', 'string', 'max:255', 'unique:categories'],
+        ]);
         return  Category::create([
             'name' => $request['name'],
         ]);
@@ -51,7 +54,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => ['required', 'string', 'max:255', 'unique:categories'],
+        ]);
+        Category::findOrFail($id)->update($request->all());
+        // return 'Updating data';
     }
 
     /**
@@ -62,6 +69,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Category::findOrFail($id)->delete();
+
+        // return ['message' => 'Category Deleted Successfully'];
     }
 }
