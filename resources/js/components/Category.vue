@@ -123,10 +123,12 @@ export default {
             this.$Progress.start();
             axios
                 .get("api/category")
-                .then(({ data }) => (this.categories = data.data));
+                .then(({ data }) => (this.categories = data.data))
+                .catch(error => {
+                    console.log(error.response.data.message);
+                });
             this.$Progress.finish();
         },
-
         createCategory() {
             this.$Progress.start();
             this.form

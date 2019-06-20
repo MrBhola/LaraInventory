@@ -32,7 +32,11 @@ let routes = [{
     {
         path: '/items',
         component: require('./components/Items.vue').default
-    }
+    },
+    // {
+    //     path: '/developer',
+    //     component: require('./components/Developer.vue').default
+    // }
 ]
 
 const router = new VueRouter({
@@ -68,7 +72,22 @@ window.Toast = Toast
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
+//components of laravel passport
 
+Vue.component(
+    'passport-clients',
+    require('./components/passport/Clients.vue').default
+);
+
+Vue.component(
+    'passport-authorized-clients',
+    require('./components/passport/AuthorizedClients.vue').default
+);
+
+Vue.component(
+    'passport-personal-access-tokens',
+    require('./components/passport/PersonalAccessTokens.vue').default
+);
 
 const app = new Vue({
     el: '#app',
