@@ -2,11 +2,10 @@
     <div class="container">
         <div class="row mt-5">
             <div class="col-md-12">
-                <div class="card">
+                <div class="card pt-2 pb-2">
                     <div class="card-header">
-                        <h3 class="card-title">Category List Table</h3>
-
-                        <div class="card-tools">
+                        <h3 class="card-title mt-2">Category List Table</h3>
+                        <div class="card-tools mt-2">
                             <button class="btn btn-success" @click="createModal">
                                 Add New
                                 <i class="fas fa-layer-group"></i>
@@ -14,6 +13,8 @@
                             </button>
                         </div>
                     </div>
+                </div>
+                <div class="card">
                     <!-- /.card-header -->
                     <div class="card-body table-responsive p-0">
                         <table class="table table-hover table-striped">
@@ -25,7 +26,7 @@
                                     <th>Updated at</th>
                                     <th class="text-right">Action</th>
                                 </tr>
-                                <tr v-for="category in categories" :key="category.id">
+                                <tr v-for="category in categories.data" :key="category.id">
                                     <td>{{category.name | ucFirst}}</td>
                                     <td>{{category.id}}</td>
                                     <td>{{category.created_at | dFormat}}</td>
@@ -43,6 +44,9 @@
                         </table>
                     </div>
                     <!-- /.card-body -->
+                    <div class="card-footer">
+                        <pagination :data="categories" @pagination-change-page="getResults"></pagination>
+                    </div>
                 </div>
                 <!-- /.card -->
             </div>
@@ -118,12 +122,21 @@ export default {
             $("#addNew").modal("show");
             this.form.fill(category);
         },
-
+        getResults(page = 1) {
+            axios
+                .get("api/category?page=" + page)
+                .then(response => {
+                    this.categories = response.data;
+                })
+                .catch(error => {
+                    console.log(error.response.data.message);
+                });
+        },
         loadCategories() {
             this.$Progress.start();
             axios
                 .get("api/category")
-                .then(({ data }) => (this.categories = data.data))
+                .then(({ data }) => (this.categories = data))
                 .catch(error => {
                     console.log(error.response.data.message);
                 });

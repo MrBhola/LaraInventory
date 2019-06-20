@@ -33,10 +33,10 @@ let routes = [{
         path: '/items',
         component: require('./components/Items.vue').default
     },
-    // {
-    //     path: '/developer',
-    //     component: require('./components/Developer.vue').default
-    // }
+    {
+        path: '*',
+        component: require('./components/Error.vue').default
+    },
 ]
 
 const router = new VueRouter({
@@ -88,6 +88,7 @@ Vue.component(
     'passport-personal-access-tokens',
     require('./components/passport/PersonalAccessTokens.vue').default
 );
+Vue.component('pagination', require('laravel-vue-pagination'));
 
 const app = new Vue({
     el: '#app',

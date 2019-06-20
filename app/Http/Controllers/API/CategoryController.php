@@ -24,7 +24,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return Category::latest()->paginate(10);
+        return Category::latest()->paginate(5);
     }
 
     /**
