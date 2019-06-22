@@ -60749,6 +60749,261 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Intro.vue?vue&type=template&id=0648c911&":
+/*!********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Intro.vue?vue&type=template&id=0648c911& ***!
+  \********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "Box-body" }, [
+    _c(
+      "article",
+      {
+        staticClass: "markdown-body entry-content p-5",
+        attrs: { itemprop: "text" }
+      },
+      [
+        _c("h1", [
+          _c(
+            "a",
+            {
+              staticClass: "anchor",
+              attrs: {
+                id: "user-content-sample-inventory",
+                "aria-hidden": "true",
+                href: "#sample-inventory"
+              }
+            },
+            [
+              _c(
+                "svg",
+                {
+                  staticClass: "octicon octicon-link",
+                  attrs: {
+                    viewBox: "0 0 16 16",
+                    version: "1.1",
+                    width: "16",
+                    height: "16",
+                    "aria-hidden": "true"
+                  }
+                },
+                [
+                  _c("path", {
+                    attrs: {
+                      "fill-rule": "evenodd",
+                      d:
+                        "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
+                    }
+                  })
+                ]
+              )
+            ]
+          ),
+          _vm._v("sample-inventory\n        ")
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "We are building an record keeping system for variable inventories. An inventory is an item kept in storage for future/current use. Everyone keeps record of inventory - its just different approaches. Lets give an approach to how we keep our records."
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "We want to build a record keeping system that can add different set of fields for different items. For example, I want to keep record of two separate categories of items, say, Cans of Juice for different flavors and Laptop Computers of various brands. These two items can have few common fields while many different fields like brand, quantity, name, sku, color as same fields while RAM, Processor, Battery Life, Flavour, Volume, Expiry Date, etc are different fields."
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "But I do not want to be restricted to few field names only. I want to add my own field name and store the value for it if an item requires it. Example, I want to add a Model Number field for the item that belongs to Computers category. Similarly, I may want to add Juice Supplier field for the Juice category. Let's summarize this in a few acceptance criteria as below:"
+          )
+        ]),
+        _vm._v(" "),
+        _c("h2", [
+          _c(
+            "a",
+            {
+              staticClass: "anchor",
+              attrs: {
+                id: "user-content-acceptance-criteria",
+                "aria-hidden": "true",
+                href: "#acceptance-criteria"
+              }
+            },
+            [
+              _c(
+                "svg",
+                {
+                  staticClass: "octicon octicon-link",
+                  attrs: {
+                    viewBox: "0 0 16 16",
+                    version: "1.1",
+                    width: "16",
+                    height: "16",
+                    "aria-hidden": "true"
+                  }
+                },
+                [
+                  _c("path", {
+                    attrs: {
+                      "fill-rule": "evenodd",
+                      d:
+                        "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
+                    }
+                  })
+                ]
+              )
+            ]
+          ),
+          _vm._v("Acceptance Criteria\n        ")
+        ]),
+        _vm._v(" "),
+        _vm._m(0),
+        _vm._v(" "),
+        _c("h2", [
+          _c(
+            "a",
+            {
+              staticClass: "anchor",
+              attrs: {
+                id: "user-content-directions-for-coding",
+                "aria-hidden": "true",
+                href: "#directions-for-coding"
+              }
+            },
+            [
+              _c(
+                "svg",
+                {
+                  staticClass: "octicon octicon-link",
+                  attrs: {
+                    viewBox: "0 0 16 16",
+                    version: "1.1",
+                    width: "16",
+                    height: "16",
+                    "aria-hidden": "true"
+                  }
+                },
+                [
+                  _c("path", {
+                    attrs: {
+                      "fill-rule": "evenodd",
+                      d:
+                        "M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
+                    }
+                  })
+                ]
+              )
+            ]
+          ),
+          _vm._v("Directions for coding\n        ")
+        ]),
+        _vm._v(" "),
+        _vm._m(1)
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ul", [
+      _c("li", [
+        _vm._v("\n                [] I can see an\n                "),
+        _c("strong", [_vm._v("Add Item")]),
+        _vm._v(
+          " button that takes me to a form where I can add various required fields.\n            "
+        )
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _vm._v(
+          "[] I can choose a category to separate my item from one another while adding the item"
+        )
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _vm._v(
+          "[] I can add/remove an entirely new field name and its value for my item."
+        )
+      ]),
+      _vm._v(" "),
+      _c("li", [_vm._v("[] I can save my item after passing validations")]),
+      _vm._v(" "),
+      _c("li", [_vm._v("[] I can view my list of items by category")]),
+      _vm._v(" "),
+      _c("li", [_vm._v("[] I can view a single item separately")]),
+      _vm._v(" "),
+      _c("li", [
+        _vm._v(
+          "[] I can update any item at my will and the updated data is rendered in the list"
+        )
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _vm._v(
+          "[] I can remove an item from my list and the total count of the item is updated accordingly"
+        )
+      ]),
+      _vm._v(" "),
+      _c("li", [_vm._v("[] I can view/add/remove categories.")]),
+      _vm._v(" "),
+      _c("li", [
+        _vm._v(
+          "[] I can see the number of items stored in each category in the category list page."
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ul", [
+      _c("li", [_vm._v("Use Laravel 5.6+")]),
+      _vm._v(" "),
+      _c("li", [
+        _vm._v(
+          "Try to make use of Interfaces/abstract classes while building this app"
+        )
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _vm._v(
+          "Write migrations for whatever tables/data you need it to make up and running"
+        )
+      ]),
+      _vm._v(" "),
+      _c("li", [_vm._v("Follow PSR-2 coding conventions")]),
+      _vm._v(" "),
+      _c("li", [_vm._v("Write doc comments for the code you write")]),
+      _vm._v(" "),
+      _c("li", [
+        _vm._v("\n                Demonstrate your skill in\n                "),
+        _c("strong", [_vm._v("git")]),
+        _vm._v(" by making more than just a few commits\n            ")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Items.vue?vue&type=template&id=53c28065&":
 /*!********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Items.vue?vue&type=template&id=53c28065& ***!
@@ -75671,6 +75926,9 @@ var routes = [{
   path: '/items',
   component: __webpack_require__(/*! ./components/Items.vue */ "./resources/js/components/Items.vue")["default"]
 }, {
+  path: '/intro',
+  component: __webpack_require__(/*! ./components/Intro.vue */ "./resources/js/components/Intro.vue")["default"]
+}, {
   path: '*',
   component: __webpack_require__(/*! ./components/Error.vue */ "./resources/js/components/Error.vue")["default"]
 }];
@@ -76028,6 +76286,59 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Intro.vue":
+/*!*******************************************!*\
+  !*** ./resources/js/components/Intro.vue ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Intro_vue_vue_type_template_id_0648c911___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Intro.vue?vue&type=template&id=0648c911& */ "./resources/js/components/Intro.vue?vue&type=template&id=0648c911&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  script,
+  _Intro_vue_vue_type_template_id_0648c911___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Intro_vue_vue_type_template_id_0648c911___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Intro.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Intro.vue?vue&type=template&id=0648c911&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/Intro.vue?vue&type=template&id=0648c911& ***!
+  \**************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Intro_vue_vue_type_template_id_0648c911___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Intro.vue?vue&type=template&id=0648c911& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Intro.vue?vue&type=template&id=0648c911&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Intro_vue_vue_type_template_id_0648c911___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Intro_vue_vue_type_template_id_0648c911___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
