@@ -17,7 +17,4 @@ Route::get('/', function () {
 
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
-// Route::resource('/category', 'CategoryController')->middleware('auth');
-
 Route::get('{parh}', 'HomeController@index')->where('path', '([A-z\d-\/_.]+)?');
