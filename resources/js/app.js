@@ -31,7 +31,11 @@ let routes = [{
     },
     {
         path: '/items',
-        component: require('./components/Items.vue').default
+        component: require('./components/items/Index.vue').default
+    },
+    {
+        path: '/items-create',
+        component: require('./components/items/Create.vue').default
     },
     {
         path: '/intro',

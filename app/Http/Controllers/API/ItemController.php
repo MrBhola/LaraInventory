@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
-use App\Item;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Item;
+use App\Category;
 
 class ItemController extends Controller
 {
@@ -14,18 +16,19 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
+        return Item::paginate(20);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    // /**
+    //  * Show the form for creating a new resource.
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function create()
+    // {
+    //     // return 'allen kahawas';
+    //     // return Category::get();
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -35,16 +38,16 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Item  $item
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Item $item)
+    public function show($id)
     {
         //
     }
@@ -52,10 +55,10 @@ class ItemController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Item  $item
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Item $item)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +67,10 @@ class ItemController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Item  $item
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Item $item)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +78,10 @@ class ItemController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Item  $item
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Item $item)
+    public function destroy($id)
     {
         //
     }
