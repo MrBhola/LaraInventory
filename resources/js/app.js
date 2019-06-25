@@ -38,6 +38,12 @@ let routes = [{
         component: require('./components/items/Create.vue').default
     },
     {
+        path: '/items-edit/:id',
+        name: 'item',
+        component: require('./components/items/Edit.vue').default,
+        props: true
+    },
+    {
         path: '/intro',
         component: require('./components/Intro.vue').default
     },

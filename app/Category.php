@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-// use Laravel\Passport\HasApiTokens;
+use App\Item;
 
 class Category extends Model
 {
@@ -11,4 +11,8 @@ class Category extends Model
 
     protected $fillable = ['name'];
     protected $table = 'categories';
+    public function item()
+    {
+        return $this->hasMany(Item::class);
+    }
 }

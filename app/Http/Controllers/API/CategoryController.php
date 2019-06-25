@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Category;
+use function GuzzleHttp\json_encode;
 
 class CategoryController extends Controller
 {
@@ -51,7 +52,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        return response()->json(Category::all());
     }
 
     /**

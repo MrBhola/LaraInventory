@@ -22,7 +22,7 @@
                                 <tr>
                                     <th>Item ID</th>
                                     <th>Item name</th>
-                                    <th>Category ID</th>
+                                    <th>Category</th>
                                     <th>Created at</th>
                                     <th>Updated at</th>
                                     <th class="text-right">Action</th>
@@ -30,14 +30,17 @@
                                 <tr v-for="item in items.data" :key="item.id">
                                     <td>{{item.id}}</td>
                                     <td>{{item.name | ucFirst}}</td>
-                                    <td>{{item.category_id}}</td>
+                                    <td>{{item.category.name}}</td>
                                     <td>{{item.created_at | dFormat}}</td>
                                     <td>{{item.updated_at | dFormat}}</td>
                                     <td class="text-right">
                                         <a href="#">
-                                            <i class="fa fa-edit green m-1"></i>
+                                            <i class="fa fa-eye blue m-1"></i>
                                         </a>
-                                        <a href="#" @click="deleteCategory(category.id)">
+                                        <router-link :to="'items-edit/'+item.id">
+                                            <i class="fa fa-edit green m-1"></i>
+                                        </router-link>
+                                        <a href="#" @click="deleteItem(item.id)">
                                             <i class="fa fa-trash red m-1"></i>
                                         </a>
                                     </td>
@@ -61,7 +64,10 @@
 export default {
     data() {
         return {
-            items: {}
+            items: {},
+            form: new Form({
+                id: ""
+            })
         };
     },
     methods: {
@@ -84,6 +90,9 @@ export default {
                     console.log(error.response.data.message);
                 });
             this.$Progress.finish();
+        },
+        editItem(id) {
+            this.$router.push({ name: "item", params: { id: id } });
         },
         deleteItem(id) {
             Swal.fire({
@@ -124,7 +133,6 @@ export default {
     },
     created() {
         this.loadItems();
-        // setInterval(() => this.loadCategories(), 4000);
     }
 };
 </script>
