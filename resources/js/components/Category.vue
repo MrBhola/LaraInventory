@@ -4,7 +4,12 @@
             <div class="col-md-12">
                 <div class="card pt-2 pb-2">
                     <div class="card-header">
-                        <h3 class="card-title mt-2">Category List Table</h3>
+                        <div class="d-flex justify-content-inline">
+                            <h3 class="card-title mt-2">Category List Table</h3>
+                            <p class="card-title mt-2 ml-5">
+                                <span class="ml-5">Total no. of categories : {{resultCount}}</span>
+                            </p>
+                        </div>
                         <div class="card-tools mt-2">
                             <button class="btn btn-success" @click="createModal">
                                 Add New
@@ -22,6 +27,7 @@
                                 <tr>
                                     <th>Category name</th>
                                     <th>Category ID</th>
+                                    <th>No. of Items</th>
                                     <th>Created at</th>
                                     <th>Updated at</th>
                                     <th class="text-right">Action</th>
@@ -29,6 +35,7 @@
                                 <tr v-for="category in categories.data" :key="category.id">
                                     <td>{{category.name | ucFirst}}</td>
                                     <td>{{category.id}}</td>
+                                    <td>{{category.count}}</td>
                                     <td>{{category.created_at | dFormat}}</td>
                                     <td>{{category.updated_at | dFormat}}</td>
                                     <td class="text-right">
@@ -44,9 +51,6 @@
                         </table>
                     </div>
                     <!-- /.card-body -->
-                    <div class="card-footer">
-                        <pagination :data="categories" @pagination-change-page="getResults"></pagination>
-                    </div>
                 </div>
                 <!-- /.card -->
             </div>
@@ -122,16 +126,7 @@ export default {
             $("#addNew").modal("show");
             this.form.fill(category);
         },
-        getResults(page = 1) {
-            axios
-                .get("api/category?page=" + page)
-                .then(response => {
-                    this.categories = response.data;
-                })
-                .catch(error => {
-                    console.log(error.response.data.message);
-                });
-        },
+
         loadCategories() {
             this.$Progress.start();
             axios
@@ -206,7 +201,14 @@ export default {
             });
         }
     },
-
+    computed: {
+        resultCount() {
+            if (Object.keys(this.categories).length == 0) {
+                return 0;
+            }
+            return Object.keys(this.categories.data).length;
+        }
+    },
     mounted() {
         console.log("Component mounted.");
     },

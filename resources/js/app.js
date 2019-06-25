@@ -44,6 +44,12 @@ let routes = [{
         props: true
     },
     {
+        path: '/items-show/:id',
+        name: 'item',
+        component: require('./components/items/Show.vue').default,
+        props: true
+    },
+    {
         path: '/intro',
         component: require('./components/Intro.vue').default
     },

@@ -56,13 +56,18 @@
                         <has-error :form="form" :field="'rows.'+index+'.value'"></has-error>
 
                         <div class="pl-2">
-                            <a href="#" @click.prevent="removeItem(row.id)">*</a>
+                            <a href="#" @click.prevent="removeItem(row.id)">
+                                <i class="fas fa-minus-circle fa-lg red"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="d-flex justify-content-center">
-                <a @click.prevent="addForm" class="badge badge-secondary text-white">Add More</a>
+                <a @click.prevent="addForm" class="btn bnt-lg btn-outline-success">
+                    Add More
+                    <i class="fas fa-plus-circle fa-lg blue"></i>
+                </a>
             </div>
             <button type="submit" class="btn btn-primary float-right">Submit</button>
         </form>

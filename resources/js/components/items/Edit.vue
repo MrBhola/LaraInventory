@@ -11,22 +11,29 @@
                         placeholder="Enter Item name :"
                         :class="{ 'is-invalid': form.errors.has('name') }"
                     >
+                    <has-error :form="form" field="name"></has-error>
                 </div>
             </div>
             <div class="form-group">
                 <label for="category">Category:</label>
                 <div class="col-6">
-                    <select v-model="form.category_id" name="category" class="form-control">
-                        <option>Select a Category</option>
+                    <select
+                        v-model="form.category_id"
+                        name="category"
+                        class="form-control"
+                        :class="{ 'is-invalid': form.errors.has('category_id') }"
+                    >
+                        <option value="null" disabled>Select a Category</option>
                         <option
                             v-for="category in categories"
                             :key="category.id"
                             :value="category.id"
                         >{{ category.name }}</option>
                     </select>
+                    <has-error :form="form" field="category_id"></has-error>
                 </div>
             </div>
-            <div v-for="row in form.rows" :key="row.id">
+            <div v-for="(row,index) in form.rows" :key="row.id">
                 <div class="form-group row">
                     <div class="col-6">
                         <input
@@ -34,7 +41,9 @@
                             type="text"
                             class="form-control"
                             placeholder="Enter attribute"
+                            :class="{ 'is-invalid': form.errors.has('rows.'+index+'.key') }"
                         >
+                        <has-error :form="form" :field="'rows.'+index+'.key'"></has-error>
                     </div>
                     <div class="col-6 d-flex align-items-center">
                         <input
@@ -42,17 +51,24 @@
                             type="text"
                             class="form-control"
                             placeholder="Enter values"
+                            :class="{ 'is-invalid': form.errors.has('rows.'+index+'.value') }"
                         >
                         <div class="pl-2">
-                            <a href="#" @click.prevent="removeItem(row.id)">*</a>
+                            <a href="#" @click.prevent="removeItem(row.id)">
+                                <i class="fas fa-minus-circle fa-lg red"></i>
+                            </a>
                         </div>
+                        <has-error :form="form" :field="'rows.'+index+'.value'"></has-error>
                     </div>
                 </div>
             </div>
             <div class="d-flex justify-content-center">
-                <a @click.prevent="addForm" class="badge badge-secondary text-white">Add More</a>
+                <a @click.prevent="addForm" class="btn bnt-lg btn-outline-success">
+                    Add More
+                    <i class="fas fa-plus-circle fa-lg blue"></i>
+                </a>
             </div>
-            <button type="submit" class="btn btn-primary float-right">Submit</button>
+            <button type="submit" class="btn btn-success float-right">Update</button>
         </form>
     </div>
 </template>

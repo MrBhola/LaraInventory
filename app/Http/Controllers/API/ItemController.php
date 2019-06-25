@@ -28,7 +28,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return Item::with('category')->paginate(20);
+        return Item::with('category')->get();
         // return Item::paginate(20);
     }
 
@@ -60,7 +60,7 @@ class ItemController extends Controller
      */
     public function show($id)
     {
-        return Item::findOrFail($id);
+        return Item::with('category')->findOrFail($id);
     }
 
     /**
@@ -81,7 +81,7 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ItemCreateRequest $request, $id)
     {
         $request->merge(['properties' => json_encode($request->rows)]);
         Item::findOrFail($id)->update($request->all());

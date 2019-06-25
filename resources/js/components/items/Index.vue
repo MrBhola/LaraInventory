@@ -4,7 +4,12 @@
             <div class="col-md-12">
                 <div class="card pt-2 pb-2">
                     <div class="card-header">
-                        <h3 class="card-title mt-2">Items List Table</h3>
+                        <div class="d-flex justify-content-inline">
+                            <h3 class="card-title mt-2">Items List Table</h3>
+                            <p class="card-title mt-2 ml-5">
+                                <span class="ml-5">Total no. of items : {{resultCount}}</span>
+                            </p>
+                        </div>
                         <div class="card-tools mt-2">
                             <router-link to="/items-create" class="btn btn-success">
                                 Add New
@@ -27,16 +32,17 @@
                                     <th>Updated at</th>
                                     <th class="text-right">Action</th>
                                 </tr>
-                                <tr v-for="item in items.data" :key="item.id">
+                                <tr v-for="item in items" :key="item.id">
                                     <td>{{item.id}}</td>
                                     <td>{{item.name | ucFirst}}</td>
-                                    <td>{{item.category.name}}</td>
+                                    <td v-if="item.category">{{item.category.name}}</td>
+                                    <td v-else class="text-danger">may be deleted</td>
                                     <td>{{item.created_at | dFormat}}</td>
                                     <td>{{item.updated_at | dFormat}}</td>
                                     <td class="text-right">
-                                        <a href="#">
+                                        <router-link :to="'items-show/'+item.id">
                                             <i class="fa fa-eye blue m-1"></i>
-                                        </a>
+                                        </router-link>
                                         <router-link :to="'items-edit/'+item.id">
                                             <i class="fa fa-edit green m-1"></i>
                                         </router-link>
@@ -49,9 +55,6 @@
                         </table>
                     </div>
                     <!-- /.card-body -->
-                    <div class="card-footer">
-                        <pagination :data="items" @pagination-change-page="getResults"></pagination>
-                    </div>
                 </div>
                 <!-- /.card -->
             </div>
@@ -64,23 +67,13 @@
 export default {
     data() {
         return {
-            items: {},
+            items: [],
             form: new Form({
                 id: ""
             })
         };
     },
     methods: {
-        getResults(page = 1) {
-            axios
-                .get("api/items?page=" + page)
-                .then(response => {
-                    this.items = response.data;
-                })
-                .catch(error => {
-                    console.log(error.response.data.message);
-                });
-        },
         loadItems() {
             this.$Progress.start();
             axios
@@ -127,7 +120,14 @@ export default {
             });
         }
     },
-
+    computed: {
+        resultCount() {
+            if (Object.keys(this.items).length == 0) {
+                return 0;
+            }
+            return Object.keys(this.items).length;
+        }
+    },
     mounted() {
         console.log("Component mounted.");
     },

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Category;
 use function GuzzleHttp\json_encode;
+use App\Http\Resources\CategoryResource;
 
 class CategoryController extends Controller
 {
@@ -25,7 +26,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return Category::latest()->paginate(5);
+        return CategoryResource::collection(Category::all());
     }
 
     /**
@@ -51,7 +52,7 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    { //This methode is using to make api request to load all the category in item create and update component
         return response()->json(Category::all());
     }
 
@@ -82,5 +83,9 @@ class CategoryController extends Controller
         Category::findOrFail($id)->delete();
 
         // return ['message' => 'Category Deleted Successfully'];
+    }
+    public function related($id)
+    {
+        return Category::findOrFail($id)->item;
     }
 }
