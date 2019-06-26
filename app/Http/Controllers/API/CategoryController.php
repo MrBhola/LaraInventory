@@ -86,8 +86,16 @@ class CategoryController extends Controller
 
         // return ['message' => 'Category Deleted Successfully'];
     }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function related($id)
     {
-        return $this->repository->findOrFail($id)->item;
+        $posts = Category::find($id);
+        // return $posts;
+        return response()->json($posts);
     }
 }

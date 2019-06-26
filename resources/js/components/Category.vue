@@ -33,7 +33,11 @@
                                     <th class="text-right">Action</th>
                                 </tr>
                                 <tr v-for="category in categories.data" :key="category.id">
-                                    <td>{{category.name | ucFirst}}</td>
+                                    <td>
+                                        <router-link
+                                            :to="'/related/'+category.id"
+                                        >{{category.name|ucFirst}}</router-link>
+                                    </td>
                                     <td>{{category.id}}</td>
                                     <td>{{category.count}}</td>
                                     <td>{{category.created_at | dFormat}}</td>

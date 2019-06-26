@@ -40,10 +40,10 @@
                                     <td>{{item.created_at | dFormat}}</td>
                                     <td>{{item.updated_at | dFormat}}</td>
                                     <td class="text-right">
-                                        <router-link :to="'items-show/'+item.id">
+                                        <router-link :to="'/items-show/'+item.id">
                                             <i class="fa fa-eye blue m-1"></i>
                                         </router-link>
-                                        <router-link :to="'items-edit/'+item.id">
+                                        <router-link :to="'/items-edit/'+item.id">
                                             <i class="fa fa-edit green m-1"></i>
                                         </router-link>
                                         <a href="#" @click="deleteItem(item.id)">

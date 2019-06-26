@@ -22,10 +22,6 @@ Vue.component(AlertError.name, AlertError)
 // Initialize vue router and register
 Vue.use(VueRouter)
 let routes = [{
-        path: '/dashboard',
-        component: require('./components/Dashboard.vue').default
-    },
-    {
         path: '/category',
         component: require('./components/Category.vue').default
     },
@@ -52,6 +48,10 @@ let routes = [{
     {
         path: '/intro',
         component: require('./components/Intro.vue').default
+    },
+    {
+        path: '/related/:id',
+        component: require('./components/Related.vue').default
     },
     {
         path: '*',
