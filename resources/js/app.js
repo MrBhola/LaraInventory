@@ -90,9 +90,6 @@ const Toast = Swal.mixin({
 });
 window.Toast = Toast
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
-
 const app = new Vue({
     el: '#app',
     router //using router
