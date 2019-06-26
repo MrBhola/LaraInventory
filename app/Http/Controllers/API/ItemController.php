@@ -12,13 +12,16 @@ use App\Http\Requests\ItemCreateRequest;
 class ItemController extends Controller
 {
 
+    protected $repository;
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Item $repository)
     {
+        $this->repository = $repository;
         $this->middleware('auth:api');
     }
     /**
@@ -28,7 +31,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return Item::with('category')->get();
+        return $this->repository->with('category')->get();
         // return Item::paginate(20);
     }
 
@@ -49,7 +52,7 @@ class ItemController extends Controller
     public function store(ItemCreateRequest $request)
     {
         $request->merge(['properties' => json_encode($request->rows)]);
-        return Item::create($request->all());
+        return $this->repository->create($request->all());
     }
 
     /**
@@ -60,7 +63,7 @@ class ItemController extends Controller
      */
     public function show($id)
     {
-        return Item::with('category')->findOrFail($id);
+        return $this->repository->with('category')->findOrFail($id);
     }
 
     /**
@@ -71,7 +74,7 @@ class ItemController extends Controller
      */
     public function edit($id)
     {
-        return Item::findOrFail($id);
+        return $this->repository->findOrFail($id);
     }
 
     /**
@@ -84,7 +87,7 @@ class ItemController extends Controller
     public function update(ItemCreateRequest $request, $id)
     {
         $request->merge(['properties' => json_encode($request->rows)]);
-        Item::findOrFail($id)->update($request->all());
+        $this->repository->findOrFail($id)->update($request->all());
     }
 
     /**
@@ -95,6 +98,6 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
-        Item::findOrFail($id)->delete();
+        $this->repository->findOrFail($id)->delete();
     }
 }

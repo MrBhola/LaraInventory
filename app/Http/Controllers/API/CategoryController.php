@@ -10,13 +10,15 @@ use App\Http\Resources\CategoryResource;
 
 class CategoryController extends Controller
 {
+    protected $repository;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Category $repository)
     {
+        $this->repository = $repository;
         $this->middleware('auth:api');
     }
     /**
@@ -26,7 +28,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return CategoryResource::collection(Category::all());
+        return CategoryResource::collection($this->repository->all());
     }
 
     /**
@@ -40,7 +42,7 @@ class CategoryController extends Controller
         $this->validate($request, [
             'name' => ['required', 'string', 'max:255', 'unique:categories'],
         ]);
-        return  Category::create([
+        return  $this->repository->create([
             'name' => $request['name'],
         ]);
     }
@@ -53,7 +55,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     { //This methode is using to make api request to load all the category in item create and update component
-        return response()->json(Category::all());
+        return response()->json($this->repository->all());
     }
 
     /**
@@ -68,7 +70,7 @@ class CategoryController extends Controller
         $this->validate($request, [
             'name' => ['required', 'string', 'max:255', 'unique:categories'],
         ]);
-        Category::findOrFail($id)->update($request->all());
+        $this->repository->findOrFail($id)->update($request->all());
         // return 'Updating data';
     }
 
@@ -80,12 +82,12 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        Category::findOrFail($id)->delete();
+        $this->repository->findOrFail($id)->delete();
 
         // return ['message' => 'Category Deleted Successfully'];
     }
     public function related($id)
     {
-        return Category::findOrFail($id)->item;
+        return $this->repository->findOrFail($id)->item;
     }
 }

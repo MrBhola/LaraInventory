@@ -25,16 +25,16 @@
                         <table class="table table-hover table-striped">
                             <tbody>
                                 <tr>
-                                    <th>Item ID</th>
                                     <th>Item name</th>
+                                    <th>Item ID</th>
                                     <th>Category</th>
                                     <th>Created at</th>
                                     <th>Updated at</th>
                                     <th class="text-right">Action</th>
                                 </tr>
                                 <tr v-for="item in items" :key="item.id">
-                                    <td>{{item.id}}</td>
                                     <td>{{item.name | ucFirst}}</td>
+                                    <td>{{item.id}}</td>
                                     <td v-if="item.category">{{item.category.name}}</td>
                                     <td v-else class="text-danger">may be deleted</td>
                                     <td>{{item.created_at | dFormat}}</td>
