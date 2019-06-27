@@ -2100,11 +2100,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["id"],
   data: function data() {
     return {
-      item: {}
+      category: {}
     };
   },
   methods: {
@@ -2113,7 +2114,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/api/related/" + this.id).then(function (_ref) {
         var data = _ref.data;
-        return _this.item = data;
+        return _this.category = data;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2136,6 +2137,28 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2282,6 +2305,27 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2532,7 +2576,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     editItem: function editItem(id) {
       this.$router.push({
-        name: "item",
+        name: "edit",
         params: {
           id: id
         }
@@ -60015,7 +60059,7 @@ var staticRenderFns = [
         ),
         _c("li", [
           _vm._v(
-            " you may download to a local hard disk extracts for your personal and non-commercial use on."
+            " you may download to a local hard disk extracts for your personal and non-commercial use only."
           )
         ]),
         _vm._v("\n")
@@ -60048,7 +60092,9 @@ var render = function() {
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-md-8 mt-5" }, [
         _c("div", { staticClass: "card text-center" }, [
-          _c("div", { staticClass: "card-header text-bold" }),
+          _c("div", { staticClass: "card-header text-bold" }, [
+            _c("h3", [_vm._v(_vm._s(_vm.category.name))])
+          ]),
           _vm._v(" "),
           _c(
             "div",
@@ -60056,20 +60102,27 @@ var render = function() {
             [
               _vm._m(0),
               _vm._v(" "),
-              _c(
-                "router-link",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { to: "/items-edit/" + _vm.item.id }
-                },
-                [_vm._v("Edit Item")]
-              )
+              _vm._l(_vm.category.item, function(item) {
+                return _c("ul", { key: item.id, staticClass: "card-text" }, [
+                  _c(
+                    "li",
+                    [
+                      _c(
+                        "router-link",
+                        { attrs: { to: "/items-show/" + item.id } },
+                        [_vm._v(_vm._s(item.name))]
+                      )
+                    ],
+                    1
+                  )
+                ])
+              })
             ],
-            1
+            2
           ),
           _vm._v(" "),
           _c("div", { staticClass: "card-footer text-muted" }, [
-            _vm._v(_vm._s(_vm._f("dFormat")(_vm.item.created_at)))
+            _vm._v(_vm._s(_vm._f("dFormat")(_vm.category.created_at)))
           ])
         ])
       ])
@@ -60109,197 +60162,239 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card catd-body" }, [
-    _c(
-      "form",
-      {
-        staticClass: "bg-white p-4",
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            return _vm.createItem($event)
-          }
-        }
-      },
-      [
-        _c("div", { staticClass: "form-group row" }, [
-          _c("label", { attrs: { for: "name" } }, [_vm._v("Item Name:")]),
+  return _c("div", { staticClass: "mt-5" }, [
+    _c("div", { staticClass: "card catd-body" }, [
+      _c("div", { staticClass: "card pt-6 pb-2" }, [
+        _c("div", { staticClass: "card-header" }, [
+          _c("div", { staticClass: "d-flex justify-content-inline" }, [
+            _c("h3", { staticClass: "card-title mt-2" }, [
+              _vm._v("You are creatting new item : " + _vm._s(_vm.form.name))
+            ])
+          ]),
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "col-6" },
+            { staticClass: "card-tools mt-2" },
             [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.name,
-                    expression: "form.name"
-                  }
-                ],
-                staticClass: "form-control",
-                class: { "is-invalid": _vm.form.errors.has("name") },
-                attrs: { type: "text", placeholder: "Enter Item name :" },
-                domProps: { value: _vm.form.name },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.form, "name", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("has-error", { attrs: { form: _vm.form, field: "name" } })
+              _c(
+                "router-link",
+                { staticClass: "btn btn-success", attrs: { to: "/items" } },
+                [
+                  _c("i", { staticClass: "fas fa-list" }),
+                  _vm._v(
+                    "\n                        List Item\n                    "
+                  )
+                ]
+              )
             ],
             1
           )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "category" } }, [_vm._v("Category:")]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-6" },
-            [
-              _c(
-                "select",
-                {
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          staticClass: "bg-white p-4",
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.createItem($event)
+            }
+          }
+        },
+        [
+          _c("div", { staticClass: "form-group row" }, [
+            _c(
+              "div",
+              { staticClass: "col-6" },
+              [
+                _c("label", { attrs: { for: "name" } }, [
+                  _vm._v("Item Name :")
+                ]),
+                _vm._v(" "),
+                _c("input", {
                   directives: [
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.form.category_id,
-                      expression: "form.category_id"
+                      value: _vm.form.name,
+                      expression: "form.name"
                     }
                   ],
                   staticClass: "form-control",
-                  class: { "is-invalid": _vm.form.errors.has("category_id") },
-                  attrs: { name: "category" },
+                  class: { "is-invalid": _vm.form.errors.has("name") },
+                  attrs: { type: "text", placeholder: "Enter Item name :" },
+                  domProps: { value: _vm.form.name },
                   on: {
-                    change: function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.$set(
-                        _vm.form,
-                        "category_id",
-                        $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      )
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "name", $event.target.value)
                     }
                   }
-                },
-                [
-                  _c("option", { attrs: { value: "null", disabled: "" } }, [
-                    _vm._v("Select a Category")
-                  ]),
-                  _vm._v(" "),
-                  _vm._l(_vm.categories, function(category) {
-                    return _c(
-                      "option",
-                      { key: category.id, domProps: { value: category.id } },
-                      [_vm._v(_vm._s(category.name))]
-                    )
-                  })
-                ],
-                2
-              ),
-              _vm._v(" "),
-              _c("has-error", {
-                attrs: { form: _vm.form, field: "category_id" }
-              })
-            ],
-            1
-          )
-        ]),
-        _vm._v(" "),
-        _vm._l(_vm.form.rows, function(row, index) {
-          return _c("div", { key: row.id }, [
-            _c("div", { staticClass: "form-group row" }, [
-              _c(
-                "div",
-                { staticClass: "col-6" },
-                [
-                  _c("input", {
+                }),
+                _vm._v(" "),
+                _c("has-error", { attrs: { form: _vm.form, field: "name" } })
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group row" }, [
+            _c(
+              "div",
+              { staticClass: "col-6" },
+              [
+                _c("label", { attrs: { for: "category" } }, [
+                  _vm._v("Category :")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
                     directives: [
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: row.key,
-                        expression: "row.key"
+                        value: _vm.form.category_id,
+                        expression: "form.category_id"
                       }
                     ],
                     staticClass: "form-control",
-                    class: {
-                      "is-invalid": _vm.form.errors.has(
-                        "rows." + index + ".key"
-                      )
-                    },
-                    attrs: { type: "text", placeholder: "Enter attribute" },
-                    domProps: { value: row.key },
+                    class: { "is-invalid": _vm.form.errors.has("category_id") },
+                    attrs: { name: "category" },
                     on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(row, "key", $event.target.value)
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.form,
+                          "category_id",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
                       }
                     }
-                  }),
-                  _vm._v(" "),
-                  _c("has-error", {
-                    attrs: { form: _vm.form, field: "rows." + index + ".key" }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "col-6 d-flex align-items-center" },
-                [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: row.value,
-                        expression: "row.value"
+                  },
+                  [
+                    _c("option", { attrs: { value: "null", disabled: "" } }, [
+                      _vm._v("Select a Category")
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.categories, function(category) {
+                      return _c(
+                        "option",
+                        { key: category.id, domProps: { value: category.id } },
+                        [_vm._v(_vm._s(category.name))]
+                      )
+                    })
+                  ],
+                  2
+                ),
+                _vm._v(" "),
+                _c("has-error", {
+                  attrs: { form: _vm.form, field: "category_id" }
+                })
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._l(_vm.form.rows, function(row, index) {
+            return _c("div", { key: row.id }, [
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-6" },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: row.key,
+                          expression: "row.key"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has(
+                          "rows." + index + ".key"
+                        )
+                      },
+                      attrs: { type: "text", placeholder: "Enter attribute" },
+                      domProps: { value: row.key },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(row, "key", $event.target.value)
+                        }
                       }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "rows." + index + ".key" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-6 d-flex" }, [
+                  _c(
+                    "div",
+                    { staticClass: "col-10" },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: row.value,
+                            expression: "row.value"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        class: {
+                          "is-invalid": _vm.form.errors.has(
+                            "rows." + index + ".value"
+                          )
+                        },
+                        attrs: { type: "text", placeholder: "Enter values" },
+                        domProps: { value: row.value },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(row, "value", $event.target.value)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("has-error", {
+                        attrs: {
+                          form: _vm.form,
+                          field: "rows." + index + ".value"
+                        }
+                      })
                     ],
-                    staticClass: "form-control",
-                    class: {
-                      "is-invalid": _vm.form.errors.has(
-                        "rows." + index + ".value"
-                      )
-                    },
-                    attrs: { type: "text", placeholder: "Enter values" },
-                    domProps: { value: row.value },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(row, "value", $event.target.value)
-                      }
-                    }
-                  }),
+                    1
+                  ),
                   _vm._v(" "),
-                  _c("has-error", {
-                    attrs: { form: _vm.form, field: "rows." + index + ".value" }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "pl-2" }, [
+                  _c("div", { staticClass: "pl-2 mt-2" }, [
                     _c(
                       "a",
                       {
@@ -60318,46 +60413,60 @@ var render = function() {
                       ]
                     )
                   ])
-                ],
-                1
-              )
+                ])
+              ])
             ])
-          ])
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "d-flex justify-content-center" }, [
-          _c(
-            "a",
-            {
-              staticClass: "btn bnt-lg btn-outline-success",
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.addForm($event)
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "d-flex justify-content-center" }, [
+            _c(
+              "a",
+              {
+                staticClass: "btn bnt-lg btn-outline-success",
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.addForm($event)
+                  }
                 }
-              }
+              },
+              [
+                _vm._v("\n                    Add More\n                    "),
+                _c("i", { staticClass: "fas fa-plus-circle fa-lg blue" })
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary float-right",
+              attrs: { type: "submit" }
             },
-            [
-              _vm._v("\n                Add More\n                "),
-              _c("i", { staticClass: "fas fa-plus-circle fa-lg blue" })
-            ]
+            [_vm._v("Submit")]
           )
-        ]),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary float-right",
-            attrs: { type: "submit" }
-          },
-          [_vm._v("Submit")]
-        )
-      ],
-      2
-    )
+        ],
+        2
+      )
+    ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w-100 row" }, [
+      _c("label", { staticClass: "col-6 text-bold" }, [
+        _vm._v("Attribute Name :")
+      ]),
+      _vm._v(" "),
+      _c("label", { staticClass: "col-6 pl-5 text-bold" }, [
+        _vm._v("Attribute Value :")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -60379,193 +60488,237 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card catd-body" }, [
-    _c(
-      "form",
-      {
-        staticClass: "bg-white p-4",
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            return _vm.editItem($event)
-          }
-        }
-      },
-      [
-        _c("div", { staticClass: "form-group row" }, [
-          _c("label", { attrs: { for: "name" } }, [_vm._v("Item Name:")]),
+  return _c("div", { staticClass: "mt-5" }, [
+    _c("div", { staticClass: "card catd-body" }, [
+      _c("div", { staticClass: "card pt-6 pb-2" }, [
+        _c("div", { staticClass: "card-header" }, [
+          _c("div", { staticClass: "d-flex justify-content-inline" }, [
+            _c("h3", { staticClass: "card-title mt-2" }, [
+              _vm._v("You are editing item : " + _vm._s(_vm.form.name))
+            ])
+          ]),
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "col-6" },
+            { staticClass: "card-tools mt-2" },
             [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.name,
-                    expression: "form.name"
-                  }
-                ],
-                staticClass: "form-control",
-                class: { "is-invalid": _vm.form.errors.has("name") },
-                attrs: { type: "text", placeholder: "Enter Item name :" },
-                domProps: { value: _vm.form.name },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.form, "name", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("has-error", { attrs: { form: _vm.form, field: "name" } })
+              _c(
+                "router-link",
+                { staticClass: "btn btn-success", attrs: { to: "/items" } },
+                [
+                  _c("i", { staticClass: "fas fa-list" }),
+                  _vm._v(
+                    "\n                        List Item\n                    "
+                  )
+                ]
+              )
             ],
             1
           )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "category" } }, [_vm._v("Category:")]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-6" },
-            [
-              _c(
-                "select",
-                {
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          staticClass: "bg-white p-4",
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.editItem($event)
+            }
+          }
+        },
+        [
+          _c("div", { staticClass: "form-group row" }, [
+            _c(
+              "div",
+              { staticClass: "col-6" },
+              [
+                _c("label", { attrs: { for: "name" } }, [_vm._v("Item Name:")]),
+                _vm._v(" "),
+                _c("input", {
                   directives: [
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.form.category_id,
-                      expression: "form.category_id"
+                      value: _vm.form.name,
+                      expression: "form.name"
                     }
                   ],
                   staticClass: "form-control",
-                  class: { "is-invalid": _vm.form.errors.has("category_id") },
-                  attrs: { name: "category" },
+                  class: { "is-invalid": _vm.form.errors.has("name") },
+                  attrs: { type: "text", placeholder: "Enter Item name :" },
+                  domProps: { value: _vm.form.name },
                   on: {
-                    change: function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.$set(
-                        _vm.form,
-                        "category_id",
-                        $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      )
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "name", $event.target.value)
                     }
                   }
-                },
-                [
-                  _c("option", { attrs: { value: "null", disabled: "" } }, [
-                    _vm._v("Select a Category")
-                  ]),
-                  _vm._v(" "),
-                  _vm._l(_vm.categories, function(category) {
-                    return _c(
-                      "option",
-                      { key: category.id, domProps: { value: category.id } },
-                      [_vm._v(_vm._s(category.name))]
-                    )
-                  })
-                ],
-                2
-              ),
-              _vm._v(" "),
-              _c("has-error", {
-                attrs: { form: _vm.form, field: "category_id" }
-              })
-            ],
-            1
-          )
-        ]),
-        _vm._v(" "),
-        _vm._l(_vm.form.rows, function(row, index) {
-          return _c("div", { key: row.id }, [
-            _c("div", { staticClass: "form-group row" }, [
-              _c(
-                "div",
-                { staticClass: "col-6" },
-                [
-                  _c("input", {
+                }),
+                _vm._v(" "),
+                _c("has-error", { attrs: { form: _vm.form, field: "name" } })
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group row" }, [
+            _c(
+              "div",
+              { staticClass: "col-6" },
+              [
+                _c("label", { attrs: { for: "category" } }, [
+                  _vm._v("Category:")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
                     directives: [
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: row.key,
-                        expression: "row.key"
+                        value: _vm.form.category_id,
+                        expression: "form.category_id"
                       }
                     ],
                     staticClass: "form-control",
-                    class: {
-                      "is-invalid": _vm.form.errors.has(
-                        "rows." + index + ".key"
-                      )
-                    },
-                    attrs: { type: "text", placeholder: "Enter attribute" },
-                    domProps: { value: row.key },
+                    class: { "is-invalid": _vm.form.errors.has("category_id") },
+                    attrs: { name: "category" },
                     on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(row, "key", $event.target.value)
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.form,
+                          "category_id",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
                       }
                     }
-                  }),
-                  _vm._v(" "),
-                  _c("has-error", {
-                    attrs: { form: _vm.form, field: "rows." + index + ".key" }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "col-6 d-flex align-items-center" },
-                [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: row.value,
-                        expression: "row.value"
+                  },
+                  [
+                    _c("option", { attrs: { value: "null", disabled: "" } }, [
+                      _vm._v("Select a Category")
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.categories, function(category) {
+                      return _c(
+                        "option",
+                        { key: category.id, domProps: { value: category.id } },
+                        [_vm._v(_vm._s(category.name))]
+                      )
+                    })
+                  ],
+                  2
+                ),
+                _vm._v(" "),
+                _c("has-error", {
+                  attrs: { form: _vm.form, field: "category_id" }
+                })
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._l(_vm.form.rows, function(row, index) {
+            return _c("div", { key: row.id }, [
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-6" },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: row.key,
+                          expression: "row.key"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.form.errors.has(
+                          "rows." + index + ".key"
+                        )
+                      },
+                      attrs: { type: "text", placeholder: "Enter attribute" },
+                      domProps: { value: row.key },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(row, "key", $event.target.value)
+                        }
                       }
+                    }),
+                    _vm._v(" "),
+                    _c("has-error", {
+                      attrs: { form: _vm.form, field: "rows." + index + ".key" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-6 d-flex" }, [
+                  _c(
+                    "div",
+                    { staticClass: "col-10" },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: row.value,
+                            expression: "row.value"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        class: {
+                          "is-invalid": _vm.form.errors.has(
+                            "rows." + index + ".value"
+                          )
+                        },
+                        attrs: { type: "text", placeholder: "Enter values" },
+                        domProps: { value: row.value },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(row, "value", $event.target.value)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("has-error", {
+                        attrs: {
+                          form: _vm.form,
+                          field: "rows." + index + ".value"
+                        }
+                      })
                     ],
-                    staticClass: "form-control",
-                    class: {
-                      "is-invalid": _vm.form.errors.has(
-                        "rows." + index + ".value"
-                      )
-                    },
-                    attrs: { type: "text", placeholder: "Enter values" },
-                    domProps: { value: row.value },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(row, "value", $event.target.value)
-                      }
-                    }
-                  }),
+                    1
+                  ),
                   _vm._v(" "),
-                  _c("div", { staticClass: "pl-2" }, [
+                  _c("div", { staticClass: "pl-2 mt-2" }, [
                     _c(
                       "a",
                       {
@@ -60583,51 +60736,61 @@ var render = function() {
                         })
                       ]
                     )
-                  ]),
-                  _vm._v(" "),
-                  _c("has-error", {
-                    attrs: { form: _vm.form, field: "rows." + index + ".value" }
-                  })
-                ],
-                1
-              )
+                  ])
+                ])
+              ])
             ])
-          ])
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "d-flex justify-content-center" }, [
-          _c(
-            "a",
-            {
-              staticClass: "btn bnt-lg btn-outline-success",
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.addForm($event)
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "d-flex justify-content-center" }, [
+            _c(
+              "a",
+              {
+                staticClass: "btn bnt-lg btn-outline-success",
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.addForm($event)
+                  }
                 }
-              }
+              },
+              [
+                _vm._v("\n                    Add More\n                    "),
+                _c("i", { staticClass: "fas fa-plus-circle fa-lg blue" })
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-success float-right",
+              attrs: { type: "submit" }
             },
-            [
-              _vm._v("\n                Add More\n                "),
-              _c("i", { staticClass: "fas fa-plus-circle fa-lg blue" })
-            ]
+            [_vm._v("Update")]
           )
-        ]),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-success float-right",
-            attrs: { type: "submit" }
-          },
-          [_vm._v("Update")]
-        )
-      ],
-      2
-    )
+        ],
+        2
+      )
+    ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w-100 row" }, [
+      _c("label", { staticClass: "col-6 text-bold" }, [
+        _vm._v("Attribute Name :")
+      ]),
+      _vm._v(" "),
+      _c("label", { staticClass: "col-6 pl-5 text-bold" }, [
+        _vm._v("Attribute Value :")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -75736,12 +75899,12 @@ var routes = [{
   component: __webpack_require__(/*! ./components/items/Create.vue */ "./resources/js/components/items/Create.vue")["default"]
 }, {
   path: '/items-edit/:id',
-  name: 'item',
+  name: 'edit',
   component: __webpack_require__(/*! ./components/items/Edit.vue */ "./resources/js/components/items/Edit.vue")["default"],
   props: true
 }, {
   path: '/items-show/:id',
-  name: 'item',
+  name: 'show',
   component: __webpack_require__(/*! ./components/items/Show.vue */ "./resources/js/components/items/Show.vue")["default"],
   props: true
 }, {
@@ -75749,7 +75912,8 @@ var routes = [{
   component: __webpack_require__(/*! ./components/Intro.vue */ "./resources/js/components/Intro.vue")["default"]
 }, {
   path: '/related/:id',
-  component: __webpack_require__(/*! ./components/Related.vue */ "./resources/js/components/Related.vue")["default"]
+  component: __webpack_require__(/*! ./components/Related.vue */ "./resources/js/components/Related.vue")["default"],
+  props: true
 }, {
   path: '*',
   component: __webpack_require__(/*! ./components/Error.vue */ "./resources/js/components/Error.vue")["default"]

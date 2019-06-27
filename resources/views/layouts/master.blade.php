@@ -7,7 +7,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>LaraInventory</title>
-    <link rel="icon" href="{{url('./img/logo.jpg')}}">
+    <link rel="icon" href="{{url('./img/logo.png')}}">
     <link rel="stylesheet" href="\css\app.css">
 </head>
 

@@ -2,7 +2,7 @@
 
 
 Route::get('/', function () {
-    return redirect()->to('/dashboard');
+    return redirect()->to('/intro');
 });
 
 Auth::routes(['register' => false]);

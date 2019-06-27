@@ -94,7 +94,8 @@ class CategoryController extends Controller
      */
     public function related($id)
     {
-        $posts = Category::find($id);
+        $posts = Category::with('item')->find($id);
+
         // return $posts;
         return response()->json($posts);
     }

@@ -86,7 +86,7 @@
                 </a>&amp;copy All rights reserved.
             </h1>
             <pre><code>    Any redistribution or reproduction of part or all of the contents in any form is prohibited other than the following:
-                        <li> you may download to a local hard disk extracts for your personal and non-commercial use on.</li>
+                        <li> you may download to a local hard disk extracts for your personal and non-commercial use only.</li>
     </code></pre>
         </article>
     </div>

@@ -85,7 +85,7 @@ export default {
             this.$Progress.finish();
         },
         editItem(id) {
-            this.$router.push({ name: "item", params: { id: id } });
+            this.$router.push({ name: "edit", params: { id: id } });
         },
         deleteItem(id) {
             Swal.fire({

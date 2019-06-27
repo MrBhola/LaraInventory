@@ -4,18 +4,19 @@
             <div class="col-md-8 mt-5">
                 <div class="card text-center">
                     <div class="card-header text-bold">
-                        <!-- <h3>{{category.name}}</h3> -->
+                        <h3>{{category.name}}</h3>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">
                             <span class="text-bold">Items related to this category :</span>
                         </h5>
-                        <!-- <ul class="card-text" v-for="item in items" :key="item.id">
-                            <li>{{item.name}}</li>
-                        </ul>-->
-                        <router-link :to="'/items-edit/'+item.id" class="btn btn-primary">Edit Item</router-link>
+                        <ul class="card-text" v-for="item in category.item" :key="item.id">
+                            <li>
+                                <router-link :to="'/items-show/'+item.id">{{item.name}}</router-link>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="card-footer text-muted">{{item.created_at | dFormat}}</div>
+                    <div class="card-footer text-muted">{{category.created_at | dFormat}}</div>
                 </div>
             </div>
         </div>
@@ -27,14 +28,14 @@ export default {
     props: ["id"],
     data() {
         return {
-            item: {}
+            category: {}
         };
     },
     methods: {
         loadItem() {
             axios
                 .get("/api/related/" + this.id)
-                .then(({ data }) => (this.item = data))
+                .then(({ data }) => (this.category = data))
                 .catch(error => {
                     console.log(error);
                 });

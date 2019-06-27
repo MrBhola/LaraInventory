@@ -35,23 +35,25 @@ let routes = [{
     },
     {
         path: '/items-edit/:id',
-        name: 'item',
+        name: 'edit',
         component: require('./components/items/Edit.vue').default,
         props: true
     },
     {
         path: '/items-show/:id',
-        name: 'item',
+        name: 'show',
         component: require('./components/items/Show.vue').default,
         props: true
     },
     {
         path: '/intro',
-        component: require('./components/Intro.vue').default
+        component: require('./components/Intro.vue').default,
+
     },
     {
         path: '/related/:id',
-        component: require('./components/Related.vue').default
+        component: require('./components/Related.vue').default,
+        props: true
     },
     {
         path: '*',
