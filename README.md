@@ -34,7 +34,7 @@ But I do not want to be restricted to few field names only. I want to add my own
 # seed database
 - php artisan migrate:fresh --seed
 -> This will create 10 fake category and 20 fake items.
-and a user with email id : bkhawas42@gmail.com  and password : password
+and a user with email id : bholakhawas@gmail.com and password : password
 
 ## Finally run php artisan serve and you are good to go.. Enjoy.
 
